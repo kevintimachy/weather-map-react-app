@@ -1,0 +1,100 @@
+name: Feature request
+description: Suggest a new feature or enhancement
+title: "[Feature] "
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Briefly describe the feature or enhancement.
+      placeholder: A concise summary of the request.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem are you trying to solve?
+      placeholder: Describe the user pain point or limitation today.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe what you want to happen.
+      placeholder: Describe the desired behavior, UI, or workflow.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: List alternatives or workarounds you considered.
+      placeholder: Optional, but useful for design discussion.
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact
+      description: How valuable is this request?
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which area does this affect most?
+      options:
+        - Map
+        - Search
+        - Current Weather
+        - Forecast
+        - UX/UI
+        - Performance
+        - Build/DevEx
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Define "done" in testable terms.
+      placeholder: |
+        - [ ] Condition 1
+        - [ ] Condition 2
+        - [ ] Condition 3
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups / references
+      description: Add links, screenshots, or examples if available.
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      placeholder: Any other relevant details.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues before creating this request.
+          required: true
+        - label: This request describes one specific feature/enhancement.
+          required: true
