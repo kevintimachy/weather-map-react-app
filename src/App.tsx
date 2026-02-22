@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import CurrentWeather from "./components/cards/CurrentWeather"
 import ForecastWeather from "./components/cards/ForecastWeather"
 import Map from "./components/Map"
@@ -16,6 +17,7 @@ function App() {
       <div className="xl:col-span-2">
         <ForecastWeather />
       </div>
+      <Analytics />
     </div >
   )
 }
