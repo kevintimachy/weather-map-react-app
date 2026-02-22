@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript weather dashboard with:
 
-Currently, two official plugins are available:
+- Interactive map (click to update location)
+- City search with geocoding
+- Current weather card
+- Forecast card
+- Optional OpenWeather map overlays (clouds, precipitation, pressure, wind, temperature)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- React 19
+- TypeScript
+- Vite 7
+- Tailwind CSS 4 + shadcn UI
+- TanStack Query (React Query)
+- React Leaflet + Leaflet
+- Zod (API response validation)
+- ESLint
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js 20+ (recommended)
+- npm
+- OpenWeather API key
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Setup
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Clone the repository.
+2. Install dependencies:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Create `.env.local` in the project root and set your key:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+VITE_API_KEY="your_openweather_api_key"
 ```
+
+Note: `VITE_` variables are exposed to the browser in Vite apps.
+
+## Run Locally
+
+```bash
+npm run dev
+```
+
+Then open the local URL shown in terminal (usually `http://localhost:5173`).
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Type-check and create production build in `dist/`
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+
+## Project Structure
+
+- `src/components/Map.tsx` - Leaflet map, click-to-set location, map layer controls
+- `src/components/SearchBar.tsx` - Location search and selection
+- `src/components/cards/CurrentWeather.tsx` - Current weather UI
+- `src/components/cards/ForecastWeather.tsx` - Forecast UI
+- `src/api.ts` - OpenWeather API calls
+- `src/schemas/weatherSchema.ts` - Zod schemas for API payload validation
+- `src/context/LocationContext.tsx` - Shared selected coordinates state
+
+## Data Source
+
+- OpenWeather APIs:
+  - Current weather
+  - Forecast
+  - Geocoding
+  - Weather tile overlays
