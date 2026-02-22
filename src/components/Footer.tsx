@@ -40,6 +40,14 @@ export default function Footer() {
                             </a>
                             <a
                                 className="underline decoration-zinc-600 underline-offset-2 transition-colors hover:text-zinc-200"
+                                href="https://openweathermap.org/"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                OpenStreetMap
+                            </a>
+                            <a
+                                className="underline decoration-zinc-600 underline-offset-2 transition-colors hover:text-zinc-200"
                                 href="https://leafletjs.com/"
                                 target="_blank"
                                 rel="noreferrer"
