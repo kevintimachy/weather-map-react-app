@@ -4,6 +4,14 @@ import Card from "./Card"
 import WeatherIcon from "../WeatherIcon"
 import { useLocation } from "../../context/LocationContext"
 
+function formatForecastTime(dt: number, timezoneOffsetSeconds: number) {
+    const localTimestamp = (dt + timezoneOffsetSeconds) * 1000;
+    return new Intl.DateTimeFormat([], {
+        weekday: "short",
+        hour: "numeric",
+        timeZone: "UTC",
+    }).format(new Date(localTimestamp));
+}
 
 
 export default function ForecastWeather() {
@@ -32,10 +40,7 @@ export default function ForecastWeather() {
                         className="min-w-36 shrink-0 rounded-lg bg-zinc-800/80 p-2 border border-zinc-700 flex flex-col gap-2"
                     >
                         <p className="text-xs text-zinc-400">
-                            {new Date(item.dt * 1000).toLocaleString([], {
-                                weekday: "short",
-                                hour: "numeric",
-                            })}
+                            {formatForecastTime(item.dt, data.city.timezone)}
 
                         </p>
 
